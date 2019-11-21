@@ -60,7 +60,7 @@ int main(int argc, char** argv)
 	return 0;
 }
 
-const char* usage() { return "-c x, where x = {0..10}, pick a color"; }
+const char* usage() { return "Usage:\n\t-c x, where x = {0..8}, pick a color"; }
 
 void cls() { printf("\033[2J\033[H"); }
 
@@ -129,14 +129,9 @@ void print_time(const int color, struct tm* timeinfo, struct winsize* size)
 		gotoRC(row + i, col + 63);
 		printf("\033[%dm%s\033[m", (color + 29), numbers[num_indices[1]][i]);
 	}
-	// Quarter second delay 0.25s
-	usleep(250000U);
-	/* sprintf(buffer, */
-	/* 		"\033[%dm%02d:%02d:%02d\033[m\n", */
-	/* 		(29 + color), */
-	/* 		timeinfo->tm_hour, */
-	/* 		timeinfo->tm_min, */
-	/* 		timeinfo->tm_sec); */
+	// Quarter second delay 0.42s
+	usleep(420000U);
+	// Check the size, if it has changed update accordingly
 	if(size->ws_row != _rows || size->ws_col != _cols)
 	{
 		cls();
@@ -144,7 +139,9 @@ void print_time(const int color, struct tm* timeinfo, struct winsize* size)
 		_cols = size->ws_col;
 	}
 	else
+	{
 		ioctl(STDOUT_FILENO, TIOCGWINSZ, size);
+	}
 }
 
 void display_inputs(
