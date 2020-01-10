@@ -11,7 +11,7 @@
 #include <time.h>
 #include <unistd.h>
 
-#define CLAMP(val, min, max) ((val < min) ? (min) : ((val > max) ? (max) : (val)))
+#define CLAMP(val, min, max) (((val) < (min)) ? (min) : (((val) > (max)) ? (max) : (val)))
 
 const char* usage();
 void cls();
@@ -160,13 +160,10 @@ void display_inputs(
 
 	/* Set console mode to echo or no echo */
 	if(display)
-	{
 		t.c_lflag |= ECHO;
-	}
 	else
-	{
 		t.c_lflag &= ~((tcflag_t)ECHO);
-	}
+
 	errno = 0;
 	if(tcsetattr(STDIN_FILENO, TCSANOW, &t))
 	{
