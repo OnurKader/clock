@@ -89,12 +89,12 @@ void print_time(const int color, struct tm* timeinfo, struct winsize* size)
 		for(int i = 0; i < 7; ++i)
 		{
 			gotoRC(row + i, col + 9 * j);
-			printf("\033[%dm%s\033[m", (color + 29), numbers[num_indices[j]][i]);
+			printf("\033[30m\033[%dm%s\033[48m", (color + 39), numbers[num_indices[j]][i]);
 		}
 	for(int i = 0; i < 7; ++i)
 	{
 		gotoRC(row + i, col + 18);
-		printf("\033[%dm%s\033[m", (color + 29), numbers[10][i]);
+		printf("\033[30m\033[%dm%s\033[48m", (color + 39), numbers[10][i]);
 	}
 
 	/////////////////////////////////////////////////
@@ -103,17 +103,17 @@ void print_time(const int color, struct tm* timeinfo, struct winsize* size)
 	for(int i = 0; i < 7; ++i)
 	{
 		gotoRC(row + i, col + 27);
-		printf("\033[%dm%s\033[m", (color + 29), numbers[num_indices[0]][i]);
+		printf("\033[30m\033[%dm%s\033[48m", (color + 39), numbers[num_indices[0]][i]);
 	}
 	for(int i = 0; i < 7; ++i)
 	{
 		gotoRC(row + i, col + 36);
-		printf("\033[%dm%s\033[m", (color + 29), numbers[num_indices[1]][i]);
+		printf("\033[30m\033[%dm%s\033[48m", (color + 39), numbers[num_indices[1]][i]);
 	}
 	for(int i = 0; i < 7; ++i)
 	{
 		gotoRC(row + i, col + 45);
-		printf("\033[%dm%s\033[m", (color + 29), numbers[10][i]);
+		printf("\033[30m\033[%dm%s\033[48m", (color + 39), numbers[10][i]);
 	}
 
 	/////////////////////////////////////////////////
@@ -122,15 +122,15 @@ void print_time(const int color, struct tm* timeinfo, struct winsize* size)
 	for(int i = 0; i < 7; ++i)
 	{
 		gotoRC(row + i, col + 54);
-		printf("\033[%dm%s\033[m", (color + 29), numbers[num_indices[0]][i]);
+		printf("\033[30m\033[%dm%s\033[48m", (color + 39), numbers[num_indices[0]][i]);
 	}
 	for(int i = 0; i < 7; ++i)
 	{
 		gotoRC(row + i, col + 63);
-		printf("\033[%dm%s\033[m", (color + 29), numbers[num_indices[1]][i]);
+		printf("\033[30m\033[%dm%s\033[48m", (color + 39), numbers[num_indices[1]][i]);
 	}
 	// Quarter second delay 0.42s
-	usleep(420000U);
+	usleep(250000U);
 	// Check the size, if it has changed update accordingly
 	if(size->ws_row != _rows || size->ws_col != _cols)
 	{
