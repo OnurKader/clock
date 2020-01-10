@@ -62,7 +62,7 @@ int main(int argc, char** argv)
 
 const char* usage() { return "Usage:\n\t-c x, where x = {0..8}, pick a color"; }
 
-void cls() { printf("\033[2J\033[H"); }
+void cls() { printf("\033[3J\033[2J\033[H"); }
 
 void signal_handle(int signum)
 {
